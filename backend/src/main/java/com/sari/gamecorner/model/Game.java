@@ -28,6 +28,12 @@ public class Game {
     @Column
     private String trailer;
 
+    @Column
+    @Enumerated(EnumType.STRING)
+    @ElementCollection(targetClass = Genre.class)
+    @ToString.Exclude
+    private Set<Genre> genres;
+
     @Column(name = "cover_url")
     private String coverUrl;
 
@@ -41,11 +47,12 @@ public class Game {
     private String rating;
 
     @Builder
-    public Game(String name, String storyline, String summary, String trailer, String company, String coverUrl, Date firstReleaseDate, String rating) {
+    public Game(String name, String storyline, String summary, String trailer, Set<Genre> genres, String company, String coverUrl, Date firstReleaseDate, String rating) {
         this.name = name;
         this.storyline = storyline;
         this.summary = summary;
         this.trailer = trailer;
+        this.genres = genres;
         this.coverUrl = coverUrl;
         this.firstReleaseDate = firstReleaseDate;
         this.company = company;
