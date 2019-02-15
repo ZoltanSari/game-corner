@@ -40,6 +40,12 @@ public class Game {
     @ToString.Exclude
     private Set<Perspective> gameModes;
 
+    @Column
+    @Enumerated(EnumType.STRING)
+    @ElementCollection(targetClass = Platform.class)
+    @ToString.Exclude
+    private Set<Platform> platforms;
+
     @Column(name = "cover_url")
     private String coverUrl;
 
@@ -53,12 +59,14 @@ public class Game {
     private String rating;
 
     @Builder
-    public Game(String name, String storyline, String summary, String trailer, Set<Genre> genres, Set<Perspective> gameModes, String company, String coverUrl, Date firstReleaseDate, String rating) {
+    public Game(String name, String storyline, String summary, String trailer, Set<Genre> genres, Set<Perspective> gameModes, Set<Platform> platforms, String company, String coverUrl, Date firstReleaseDate, String rating) {
         this.name = name;
         this.storyline = storyline;
         this.summary = summary;
         this.trailer = trailer;
         this.genres = genres;
+        this.gameModes = gameModes;
+        this.platforms = platforms;
         this.coverUrl = coverUrl;
         this.firstReleaseDate = firstReleaseDate;
         this.company = company;
