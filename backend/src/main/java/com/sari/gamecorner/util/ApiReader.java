@@ -35,7 +35,7 @@ public class ApiReader {
         return genre.get("name");
     }
 
-    public JSONObject getTrailerFromUrl(Object id) throws UnirestException {
+    public JSONObject getTrailerFromUrl(Object id) {
         String trailerUrl = "https://api-v3.igdb.com/game_videos/" + id + "?fields=video_id";
         try {
             return urlReader.readFromUrl(trailerUrl, API_KEY);
