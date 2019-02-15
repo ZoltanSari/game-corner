@@ -10,6 +10,7 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
 import java.util.Date;
 
 
@@ -31,7 +32,7 @@ public class DBInitializer {
     private final int TOTAL_GAME = 150;
 
 
-    //    @PostConstruct
+    @PostConstruct
     public void getGames() throws UnirestException {
         Game game;
 
