@@ -32,7 +32,7 @@ public class DBInitializer {
     private final int TOTAL_GAME = 150;
 
 
-    @PostConstruct
+//    @PostConstruct
     public void getGames() throws UnirestException {
         Game game;
 
