@@ -1,0 +1,16 @@
+<div class="table-responsive">
+  <table class="table table-bordered table-dark">
+    <thead>
+      <tr>
+        <th scope="col">Image</th>
+        <th scope="col">Title</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let game of games">
+      <tr>
+        <td><img  [src]="game.coverUrl"></td>
+        <a routerLink="/{{ game.id }}"><td [innerHTML]="game.name"></td></a>
+      </tr>
+    </tbody>
+  </table>
+</div>
