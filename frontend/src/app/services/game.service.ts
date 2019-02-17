@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpErrorResponse, HttpResponse} from "@angular/common/http";
-import {catchError, tap} from "rxjs/operators";
-import {of} from "rxjs";
-import {Game} from "../models/Game";
+import { HttpClient, HttpErrorResponse } from "@angular/common/http";
+import { catchError, tap } from "rxjs/operators";
+import { of } from "rxjs";
+import { Game } from "../models/game.model";
 
 @Injectable({
   providedIn: 'root'
@@ -14,35 +14,19 @@ export class GameService {
   constructor(private httpClient: HttpClient) { }
 
   getAllGames() {
-    return this.httpClient.get<Game[]>(this.baseUrl)
-      .pipe(
-        tap( () => console.log('All games found!')),
-        catchError(response => this.handleError(response))
-      )
+    return this.httpClient.get<Game[]>(this.baseUrl);
   }
 
   getTop5GameByRating() {
-    return this.httpClient.get<Game[]>(`${this.baseUrl}/top-5`)
-      .pipe(
-        tap( () => console.log('All games found!')),
-        catchError(response => this.handleError(response))
-      )
+    return this.httpClient.get<Game[]>(`${this.baseUrl}/top-5`);
   }
 
   getSingleGameById(gameId: number) {
-    return this.httpClient.get<Game>(`${this.baseUrl}/${gameId}`)
-      .pipe(
-        tap( () => console.log('The game found!')),
-        catchError(response => this.handleError(response))
-      )
+    return this.httpClient.get<Game>(`${this.baseUrl}/${gameId}`);
   }
 
   searchGameByTitle(searchTerm: string) {
-    return this.httpClient.get<Game>(`${this.baseUrl}/search?substring=${searchTerm}`)
-      .pipe(
-        tap( () => console.log('The game found!')),
-        catchError(response => this.handleError(response))
-      )
+    return this.httpClient.get<Game>(`${this.baseUrl}/search?substring=${searchTerm}`);
   }
 
   private handleError<T> (error: HttpErrorResponse, result?: T) {
