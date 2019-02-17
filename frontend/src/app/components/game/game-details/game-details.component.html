@@ -1,0 +1,29 @@
+<div class="container-fluid text-light pt-5 px-5">
+    <div class="col-md-4">
+      <iframe width="500"
+              height="394"
+              [src]="sanitizeUrl('https://www.youtube.com/embed/' +  game.trailer)"
+              frameborder="0"
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen></iframe>
+    </div>
+    <div class="col-md-4">
+      <h3 align="center">{{ game.name }}</h3>
+        <div class="d-flex align-items-start flex-column" style="height: 200px;">
+          <div class="mb-auto p-2">
+            Summary:
+            <label [innerHTML]="game.summary"></label>
+          </div>
+          <div class="p-2">
+            Genres:
+            <label [innerHTML]="game.genres"></label>
+          </div>
+          <div class="p-2">
+            Game mode:
+            <label [innerHTML]="game.gameModes"></label>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
