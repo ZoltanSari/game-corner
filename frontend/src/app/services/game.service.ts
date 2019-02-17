@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
-import { catchError, tap } from "rxjs/operators";
 import { of } from "rxjs";
 import { Game } from "../models/game.model";
 
