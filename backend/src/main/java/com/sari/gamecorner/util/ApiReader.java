@@ -3,6 +3,7 @@ package com.sari.gamecorner.util;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -11,7 +12,8 @@ public class ApiReader {
     @Autowired
     private RemoteUrlReader urlReader;
 
-    private String API_KEY = "68605b022550caae260d28b6bbe33b38";
+    @Value("${api.key}")
+    private String API_KEY;
 
 
     public JSONObject getGameFromUrl(Object id) throws UnirestException {
