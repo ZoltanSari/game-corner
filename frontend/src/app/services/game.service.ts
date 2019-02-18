@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
-import { of } from "rxjs";
+import {of, Subject} from "rxjs";
 import { Game } from "../models/game.model";
 
 @Injectable({
@@ -9,6 +9,7 @@ import { Game } from "../models/game.model";
 export class GameService {
 
   private baseUrl = 'http://localhost:8080/games';
+  searchResultGame = new Subject<Game[]>();
 
   constructor(private httpClient: HttpClient) { }
 
@@ -25,7 +26,11 @@ export class GameService {
   }
 
   searchGameByTitle(searchTerm: string) {
-    return this.httpClient.get<Game>(`${this.baseUrl}/search?substring=${searchTerm}`);
+    return this.httpClient.get<Game[]>(`${this.baseUrl}/search?substring=${searchTerm}`).subscribe(
+      (games: Game[]) => {
+        this.searchResultGame.next(games);
+      }
+    );
   }
 
   private handleError<T> (error: HttpErrorResponse, result?: T) {
