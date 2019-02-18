@@ -20,7 +20,6 @@ export class GameDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.id = this.route.snapshot.params['id'];
-    console.log(this.id);
     this.gameService.getSingleGameById(this.id).subscribe(
       game => {
         this.game = game;
