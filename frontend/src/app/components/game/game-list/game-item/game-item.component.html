@@ -1,12 +1,12 @@
 <div class="table-responsive">
-  <table class="table table-bordered table-dark">
+  <table class="table table-bordered">
     <thead>
     <tr>
       <th scope="col">Image</th>
       <th scope="col">Title</th>
     </tr>
     </thead>
-    <tbody>
+    <tbody *ngFor="let game of games">
     <tr>
       <td><img  [src]="game.coverUrl"
                 alt="{{ game.name }}"

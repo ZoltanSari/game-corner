@@ -1,8 +1,7 @@
 <div *ngIf="searchGames">
-  <app-game-item *ngFor="let game of searchGames"
-  [game]="game"></app-game-item>
+  <app-game-item
+  [games]="searchGames"></app-game-item>
 </div>
 <div *ngIf="!searchGames">
-  <app-game-item *ngFor="let game of games"
-                 [game]="game"></app-game-item>
+  <app-game-item [games]="games"></app-game-item>
 </div>
