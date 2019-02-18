@@ -9,12 +9,24 @@ import {Game} from "../../../models/game.model";
 })
 export class GameListComponent implements OnInit {
   games: Game[];
+  searchGames: Game[];
+  searchGame: boolean;
 
   constructor(private gameService: GameService) { }
 
   ngOnInit() {
+    console.log('getallgames');
     this.gameService.getAllGames().subscribe(
-      (games: Game[]) => this.games = games
+      (games: Game[]) => {
+        this.games = games;
+        this.searchGame = false;
+      }
+    );
+    this.gameService.searchResultGame.subscribe(
+      (games: Game[]) => {
+        this.searchGames = games;
+        this.searchGame = true;
+      }
     )
   }
 
