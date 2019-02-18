@@ -8,7 +8,7 @@ import {Game} from "../../../../models/game.model";
   styleUrls: ['./game-item.component.css']
 })
 export class GameItemComponent implements OnInit {
-  @Input() game: Game;
+  @Input() games: Game[];
 
   constructor() { }
 

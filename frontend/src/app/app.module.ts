@@ -10,6 +10,7 @@ import {AppRoutingModule} from "./app-routing.module";
 import { GameListComponent } from './components/game/game-list/game-list.component';
 import { SearchComponent } from './components/search/search.component';
 import { GameItemComponent } from './components/game/game-list/game-item/game-item.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { GameItemComponent } from './components/game/game-list/game-item/game-it
     GameDetailsComponent,
     GameListComponent,
     SearchComponent,
-    GameItemComponent
+    GameItemComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
