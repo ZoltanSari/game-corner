@@ -1,0 +1,18 @@
+<div class="table-responsive">
+  <table class="table table-bordered table-dark">
+    <thead>
+    <tr>
+      <th scope="col">Image</th>
+      <th scope="col">Title</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td><img  [src]="game.coverUrl"
+                alt="{{ game.name }}"
+                class="responsive picture"></td>
+      <a routerLink="/{{ game.id }}"><td [innerHTML]="game.name"></td></a>
+    </tr>
+    </tbody>
+  </table>
+</div>
