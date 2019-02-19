@@ -50,7 +50,7 @@ public class GameController {
     }
 
     @GetMapping("/top-5")
-    public List<Game> getTheTop5Games() {
-        return gameService.getTheMostPopularGames();
+    public List<Game> addGamesToTheHomePage() {
+        return gameService.addGamesToTheHomePage();
     }
 }

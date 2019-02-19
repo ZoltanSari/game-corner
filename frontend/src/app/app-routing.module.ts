@@ -3,9 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 import {GameDetailsComponent} from "./components/game/game-details/game-details.component";
 import { GameListComponent } from "./components/game/game-list/game-list.component";
 import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
+import {HomePageComponent} from "./components/home-page/home-page.component";
 
 
 const routes: Routes = [
+  { path: '', component: HomePageComponent},
   { path: 'games', component: GameListComponent},
   {path:'games/search', component: GameListComponent},
   { path: 'not-found', component: PageNotFoundComponent, data: {message: 'Page not found!'} },

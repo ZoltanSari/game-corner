@@ -6,6 +6,7 @@ import com.sari.gamecorner.repsitory.GameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,7 +34,14 @@ public class GameService {
         return gameRepository.findByNameContainingIgnoreCase(substring);
     }
 
-    public List<Game> getTheMostPopularGames() {
-        return gameRepository.findTop5ByOrderByRatingDesc();
+    public List<Game> addGamesToTheHomePage() {
+        List<Game> homePageGames =gameRepository.findByNameContainingIgnoreCase("assassin");
+        List<Game> formatCover = new ArrayList<>();
+
+        for (Game game : homePageGames) {
+            game.setCoverUrl(game.getCoverUrl().replace("t_thumb", "t_720p"));
+            formatCover.add(game);
+        }
+        return formatCover;
     }
 }
