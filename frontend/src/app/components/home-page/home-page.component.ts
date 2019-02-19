@@ -16,7 +16,7 @@ export class HomePageComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.gameService.getGameOnHomePage().subscribe(
+    this.gameService.addGamesToTheHomePage().subscribe(
       (games: Game[]) => this.gamesOnHomePage = games
     )
   }

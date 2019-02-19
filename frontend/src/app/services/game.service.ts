@@ -17,7 +17,7 @@ export class GameService {
     return this.httpClient.get<Game[]>(this.baseUrl);
   }
 
-  getTop5GameByRating() {
+  addGamesToTheHomePage() {
     return this.httpClient.get<Game[]>(`${this.baseUrl}/top-5`);
   }
 
