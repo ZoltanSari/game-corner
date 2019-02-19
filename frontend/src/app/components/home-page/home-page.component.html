@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="col-md-6">
+    <h1 class="text-center" [innerHTML]="gamesOnHomePage[2].name"></h1>
+    <div>
+      <h3 class="text-left" [innerHTML]="gamesOnHomePage[2].storyline"></h3>
+      <a class="push_button blue" routerLink="{{ gamesOnHomePage[2].id }}">Watch now</a>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <img [src]="gamesOnHomePage[2].coverUrl"
+         alt="{{ gamesOnHomePage[2].name }}"
+         class="responsive picture"
+         id="homePageImage">
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2 col-md-offset-3">
+      <div class="text-center img-responsive">
+        <a routerLink="{{ gamesOnHomePage[0].id }}">
+          <img [src]="gamesOnHomePage[1].coverUrl"
+               alt="{{ gamesOnHomePage[1].name }}"
+               class="responsive picture">
+        </a>
+      </div>
+      <h3 class="text-center" [innerHTML]="gamesOnHomePage[1].name"></h3>
+      <div [ngSwitch]="isGameStoryLineIsOpen(gamesOnHomePage[1].name)">
+        <h4 *ngSwitchCase="true" class="text-justify"
+            [innerHTML]="gamesOnHomePage[1].storyline"></h4>
+        <h4 *ngSwitchCase="false" class="text-justify"
+            [innerHTML]="getShorterStoryLine(gamesOnHomePage[1].storyline)"></h4>
+        <a (click)="isStoryLineOpen(gamesOnHomePage[1].name)"
+           [innerText]="isGameStoryLineIsOpen(gamesOnHomePage[1].name) ? 'read more' : 'read less'">
+        </a>
+      </div>
+    </div>
+    <div class="col-md-2 col-md-offset-2">
+      <div class="text-center img-responsive">
+        <a routerLink="{{ gamesOnHomePage[0].id }}">
+          <img [src]="gamesOnHomePage[0].coverUrl"
+               alt="{{ gamesOnHomePage[0].name }}"
+               class="responsive picture"
+          >
+        </a>
+      </div>
+      <h3 class="text-center" [innerHTML]="gamesOnHomePage[0].name"></h3>
+      <div [ngSwitch]="isGameStoryLineIsOpen(gamesOnHomePage[0].name)">
+        <h4 *ngSwitchCase="true" class="text-justify"
+            [innerHTML]="gamesOnHomePage[0].summary"></h4>
+        <h4 *ngSwitchCase="false" class="text-justify"
+            [innerHTML]="getShorterStoryLine(gamesOnHomePage[0].summary)"></h4>
+        <a (click)="isStoryLineOpen(gamesOnHomePage[0].name)"
+           [innerText]="isGameStoryLineIsOpen(gamesOnHomePage[0].name) ? 'read more' : 'read less'">
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
