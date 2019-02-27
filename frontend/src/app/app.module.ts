@@ -12,6 +12,7 @@ import { SearchComponent } from './components/search/search.component';
 import { GameItemComponent } from './components/game/game-list/game-item/game-item.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { HomePageComponent } from './components/home-page/home-page.component';
     GameItemComponent,
     PageNotFoundComponent,
     HomePageComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
