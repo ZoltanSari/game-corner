@@ -1,0 +1,31 @@
+footer {
+  background-color: black;
+  margin-top: 200px;
+}
+
+a {
+  color: rgba(255, 255, 255, .5);
+}
+
+a:hover {
+  text-decoration: none;
+  color: rgba(255, 255, 255, .75);
+}
+
+p, div {
+  color: #FFFFFF;
+}
+
+img {
+  width: 50px;
+}
+
+#table-row {
+  width: 1200px;
+}
+
+.footer-line {
+  width: 1000px;
+  height: 3px;
+  border-radius: 10px;
+}
