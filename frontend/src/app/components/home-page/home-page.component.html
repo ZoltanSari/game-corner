@@ -17,7 +17,7 @@
   <div class="row">
     <div class="col-md-2 col-md-offset-3">
       <div class="text-center img-responsive">
-        <a routerLink="{{ gamesOnHomePage[0].id }}">
+        <a routerLink="{{ gamesOnHomePage[1].id }}">
           <img [src]="gamesOnHomePage[1].coverUrl"
                alt="{{ gamesOnHomePage[1].name }}"
                class="responsive picture">
@@ -30,7 +30,7 @@
         <h4 *ngSwitchCase="false" class="text-justify"
             [innerHTML]="getShorterStoryLine(gamesOnHomePage[1].storyline)"></h4>
         <a (click)="isStoryLineOpen(gamesOnHomePage[1].name)"
-           [innerText]="isGameStoryLineIsOpen(gamesOnHomePage[1].name) ? 'read more' : 'read less'">
+           [innerText]="isGameStoryLineIsOpen(gamesOnHomePage[1].name) ? 'read less' : 'read more'">
         </a>
       </div>
     </div>
@@ -50,7 +50,7 @@
         <h4 *ngSwitchCase="false" class="text-justify"
             [innerHTML]="getShorterStoryLine(gamesOnHomePage[0].summary)"></h4>
         <a (click)="isStoryLineOpen(gamesOnHomePage[0].name)"
-           [innerText]="isGameStoryLineIsOpen(gamesOnHomePage[0].name) ? 'read more' : 'read less'">
+           [innerText]="isGameStoryLineIsOpen(gamesOnHomePage[0].name) ? 'read less' : 'read more'">
         </a>
       </div>
     </div>
