@@ -58,6 +58,10 @@ public class Game {
     @Column
     private String rating;
 
+    @Column
+    @ManyToMany
+    private List<User> users = new ArrayList<>();
+
     @Builder
     public Game(String name, String storyline, String summary, String trailer, Set<Genre> genres, Set<Perspective> gameModes, Set<Platform> platforms, String company, String coverUrl, Date firstReleaseDate, String rating) {
         this.name = name;
@@ -71,5 +75,9 @@ public class Game {
         this.firstReleaseDate = firstReleaseDate;
         this.company = company;
         this.rating = rating;
+    }
+
+    void addUser(User user) {
+        this.users.add(user);
     }
 }
