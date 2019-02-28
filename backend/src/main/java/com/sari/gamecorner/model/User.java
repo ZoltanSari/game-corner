@@ -8,8 +8,8 @@ import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -24,13 +24,13 @@ public class User {
     private long id;
 
     @Column(nullable = false)
-    private String name;
+    private String username;
 
-    @Column(nullable = false)
+    @Column(name = "email_address", nullable = false)
     private String emailAddress;
 
-    @Column(nullable = false)
-    private Date registrationDate;
+    @Column(name = "registration_date", nullable = false)
+    private LocalDate registrationDate;
 
     @Column(nullable = false)
     private String password;
@@ -60,8 +60,8 @@ public class User {
     private List<Game> gameList = new ArrayList<>();
 
     @Builder
-    public User(String name, String emailAddress, Date registrationDate, String password, List<Game> walkthroughGames, List<Game> favourite, List<Game> gameList) {
-        this.name = name;
+    public User(String name, String emailAddress, LocalDate registrationDate, String password, List<Game> walkthroughGames, List<Game> favourite, List<Game> gameList) {
+        this.username = name;
         this.emailAddress = emailAddress;
         this.registrationDate = registrationDate;
         this.password = password;
