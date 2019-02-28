@@ -8,6 +8,7 @@ import com.sari.gamecorner.repsitory.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.Optional;
 
 @Service
@@ -19,16 +20,30 @@ public class UserService {
     @Autowired
     private GameRepository gameRepository;
 
-    public void registration(UserDTO userDTO) {
-        User user = User.builder().name(userDTO.getName())
-                .emailAddress(userDTO.getEmailAddress())
-                .password(userDTO.getPassword()).build();
+    public boolean handleRegistration(UserDTO userDTO) {
+        if (!isEmailAlreadyExist(userDTO.getEmailAddress()) && !isUsernameAlreadyExist(userDTO.getUsername())) {
+            User user = User.builder().name(userDTO.getUsername())
+                    .emailAddress(userDTO.getEmailAddress())
+                    .registrationDate(LocalDate.now())
+                    .password(userDTO.getPassword()).build();
+            userRepository.save(user);
 
-        userRepository.save(user);
+            return true;
+        }
+
+        return false;
+    }
+
+    private boolean isEmailAlreadyExist(String email) {
+        return userRepository.findUserByEmailAddress(email) != null;
+    }
+
+    private boolean isUsernameAlreadyExist(String username) {
+        return userRepository.findByUsername(username) != null;
     }
 
     public User login(UserDTO userDTO) {
-        User user = userRepository.findByName(userDTO.getName());
+        User user = userRepository.findByUsername(userDTO.getUsername());
 
         if (user != null && user.getPassword().equals(userDTO.getPassword())) {
             return user;
@@ -37,8 +52,8 @@ public class UserService {
         return null;
     }
 
-    public void likeGame(String username, long id) {
-        User user = userRepository.findByName(username);
+    public void toggleGameInLikedGames(String username, long id) {
+        User user = userRepository.findByUsername(username);
 
         if (user != null) {
             Optional<Game> favouriteGame = gameRepository.findById(id);
@@ -52,8 +67,8 @@ public class UserService {
         userRepository.save(user);
     }
 
-    public void walkthroughGames(String username, long id) {
-        User user = userRepository.findByName(username);
+    public void toggleGameInWalkthroughGames(String username, long id) {
+        User user = userRepository.findByUsername(username);
 
         if (user != null) {
             Optional<Game> walkthroughGame = gameRepository.findById(id);
@@ -67,8 +82,8 @@ public class UserService {
         userRepository.save(user);
     }
 
-    public void gameList(String username, long id) {
-        User user = userRepository.findByName(username);
+    public void toggleGameInGameList(String username, long id) {
+        User user = userRepository.findByUsername(username);
 
         if (user != null) {
             Optional<Game> game = gameRepository.findById(id);
@@ -80,5 +95,9 @@ public class UserService {
         }
 
         userRepository.save(user);
+    }
+
+    public User getUserById(long id) {
+        return userRepository.findById(id).get();
     }
 }
