@@ -52,7 +52,7 @@ public class UserService {
         return null;
     }
 
-    public void toggleGameInLikedGames(String username, long id) {
+    public boolean toggleGameInLikedGames(String username, long id) {
         User user = userRepository.findByUsername(username);
 
         if (user != null) {
@@ -62,12 +62,13 @@ public class UserService {
             } else {
                 user.addGameToFavouriteGames(favouriteGame.get());
             }
+            userRepository.save(user);
+            return true;
         }
-
-        userRepository.save(user);
+        return false;
     }
 
-    public void toggleGameInWalkthroughGames(String username, long id) {
+    public boolean toggleGameInWalkthroughGames(String username, long id) {
         User user = userRepository.findByUsername(username);
 
         if (user != null) {
@@ -77,12 +78,13 @@ public class UserService {
             } else {
                 user.addGameToWalkthroughGames(walkthroughGame.get());
             }
+            userRepository.save(user);
+            return true;
         }
-
-        userRepository.save(user);
+        return false;
     }
 
-    public void toggleGameInGameList(String username, long id) {
+    public boolean toggleGameInGameList(String username, long id) {
         User user = userRepository.findByUsername(username);
 
         if (user != null) {
@@ -92,9 +94,10 @@ public class UserService {
             } else {
                 user.addGameToGameList(game.get());
             }
+            userRepository.save(user);
+            return true;
         }
-
-        userRepository.save(user);
+        return false;
     }
 
     public User getUserById(long id) {
