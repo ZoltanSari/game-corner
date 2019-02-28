@@ -6,6 +6,7 @@ import com.sari.gamecorner.model.User;
 import com.sari.gamecorner.repsitory.GameRepository;
 import com.sari.gamecorner.repsitory.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -20,12 +21,15 @@ public class UserService {
     @Autowired
     private GameRepository gameRepository;
 
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+
     public boolean handleRegistration(UserDTO userDTO) {
         if (!isEmailAlreadyExist(userDTO.getEmailAddress()) && !isUsernameAlreadyExist(userDTO.getUsername())) {
             User user = User.builder().name(userDTO.getUsername())
                     .emailAddress(userDTO.getEmailAddress())
                     .registrationDate(LocalDate.now())
-                    .password(userDTO.getPassword()).build();
+                    .password(bCryptPasswordEncoder.encode(userDTO.getPassword())).build();
             userRepository.save(user);
 
             return true;
