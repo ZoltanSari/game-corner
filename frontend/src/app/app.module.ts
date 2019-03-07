@@ -13,6 +13,8 @@ import { GameItemComponent } from './components/game/game-list/game-item/game-it
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { RegistrationComponent } from './components/registration/registration.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -25,11 +27,14 @@ import { FooterComponent } from './components/footer/footer.component';
     PageNotFoundComponent,
     HomePageComponent,
     FooterComponent,
+    RegistrationComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [GameService],
   bootstrap: [AppComponent]
